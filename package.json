@@ -3,7 +3,7 @@
 	"displayName": "get-sass-structure-from-html",
 	"description": "",
 	"publisher": "cwj0417",
-	"version": "0.0.1",
+	"version": "0.1.0",
 	"engines": {
 		"vscode": "^1.48.0"
 	},
@@ -30,7 +30,7 @@
 			{
 				"command": "get-sass-structure-from-html.generate-structure",
 				"key": "ctrl+i",
-       			"mac": "cmd+i"
+				"mac": "cmd+i"
 			}
 		],
 		"configuration": {
