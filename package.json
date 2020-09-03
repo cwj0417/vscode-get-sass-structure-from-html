@@ -2,6 +2,10 @@
 	"name": "get-sass-structure-from-html",
 	"displayName": "get-sass-structure-from-html",
 	"description": "",
+	"repository": {
+		"url": "https://github.com/cwj0417/vscode-get-sass-structure-from-html"
+	},
+	"license": "MIT",
 	"publisher": "cwj0417",
 	"version": "0.3.0",
 	"engines": {
