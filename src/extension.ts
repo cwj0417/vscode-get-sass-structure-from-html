@@ -1,9 +1,8 @@
 // The module 'vscode' contains the VS Code extensibility API
 // Import the module and reference it with the alias vscode in your code below
 import * as vscode from 'vscode';
-import SimpleHtmlParser from './lib';
+import parser from './parser';
 
-const parser = new SimpleHtmlParser();
 
 // this method is called when your extension is activated
 // your extension is activated the very first time the command is executed
@@ -26,33 +25,7 @@ export function activate(context: vscode.ExtensionContext) {
 	const generateStructure = vscode.commands.registerCommand("get-sass-structure-from-html.generate-structure", (fileUri: vscode.Uri) => {
 		const editor = vscode.window.activeTextEditor;
 		const tplstring = editor?.document.getText(editor.selection);
-		const handler = {
-			startElement(sTagName: any, oAttrs: any) {
-				let tmp = oAttrs[0].value;
-				if (tmp.split(' ').length > 1) {
-					tmp.split(' ').forEach((item: any, index: any) => {
-						if (index === 0) {
-							res += `
-							.${item} {`;
-						} else {
-							res += `
-							&.${item} {}`;
-						}
-					});
-				} else {
-					res += `
-					.${oAttrs[0].value} {`;
-				}
-			},
-			endElement(sTagName: any) {
-				res += `
-			}`;
-			},
-			characters: () => { },
-			comment: () => { }
-		};
-		let res = '';
-		parser.parse(tplstring, handler);
+		const res = parser(tplstring ?? '');
 		vscode.env.clipboard.writeText(res);
 		vscode.window.showInformationMessage('已复制');
 	});
