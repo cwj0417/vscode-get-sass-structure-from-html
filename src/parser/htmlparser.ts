@@ -43,11 +43,11 @@ class SimpleHtmlParser {
 			if (treatAsChars) {
 				let index = s.indexOf("<");
 				if (index === -1) {
-					this.contentHandler.characters(s);
+					this.contentHandler.characters?.(s);
 					s = "";
 				}
 				else {
-					this.contentHandler.characters(s.substring(0, index));
+					this.contentHandler.characters?.(s.substring(0, index));
 					s = s.substring(index);
 				}
 			}
@@ -58,7 +58,7 @@ class SimpleHtmlParser {
 
 	parseStartTag(sTag: any, sTagName: any, sRest: any) {
 		let attrs = this.parseAttributes(sTagName, sRest);
-		this.contentHandler.startElement(sTagName, attrs);
+		this.contentHandler.startElement(sTagName, attrs, sRest.endsWith("/"));
 	}
 
 	parseEndTag(sTag: any, sTagName: any) {
@@ -66,6 +66,7 @@ class SimpleHtmlParser {
 	}
 
 	parseAttributes(sTagName: any, s: any) {
+		if (!s) return
         let attrs: any[] = [];
         this.attrRe.lastIndex = 0;
         // @ts-ignore
