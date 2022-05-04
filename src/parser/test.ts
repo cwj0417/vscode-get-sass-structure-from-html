@@ -41,28 +41,57 @@ const assert = (boolean: boolean) => {
 // </div>`;
 
 
-const tpl = `
-<div id="test">
-  <div className="l2">票税助手注意事项</div>
-  <div className="l2 active aaa">
-    <div className="abc">cttt</div>
-    票税助手注意事项
-    <div className="l3 abcd">票税助手注意事项</div>
-  </div>
-</div>`;
+// const tpl = `
+// <div id="test">
+//   <div className="l2">票税助手注意事项</div>
+//   <div className="l2 active aaa">
+//     <div className="abc">cttt</div>
+//     票税助手注意事项
+//     <div className="l3 abcd">票税助手注意事项</div>
+//   </div>
+// </div>`;
 
-assert(parser(tpl) === 
-`#test {
-  .l2 {
+// assert(parser(tpl) ===
+// `#test {
+//   .l2 {
 
-  }
-  .l2.active.aaa {
-     .abc {
+//   }
+//   .l2.active.aaa {
+//      .abc {
 
-     }
-     .l3.abcd {
+//      }
+//      .l3.abcd {
 
-     }
-  }
-}`
-);
+//      }
+//   }
+// }`
+// );
+
+// const tpl = `
+// <div className="l1">
+//   <div className="l2">票税助手注意事项</div>
+//   <div className="l2">
+//     <div className="l4">票税助手注意事项</div>
+//   </div>
+//   <div className="l2">
+//     <div className="abc">cttt</div>
+//     票税助手注意事项
+//     <div className="l3">票税助手注意事项</div>
+//   </div>
+// </div>`;
+
+// assert(parser(tpl) ===
+// `.l1 {
+//   .l2 {
+//      .l4 {
+
+//      }
+//      .abc {
+
+//      }
+//      .l3 {
+
+//      }
+//   }
+// }`
+// );

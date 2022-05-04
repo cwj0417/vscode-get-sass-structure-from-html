@@ -1,9 +1,6 @@
 export type ast = {
     tag: string,
-    attrs?: Array<{
-        name: string,
-        value: string
-    }>,
+    attrs?: string[],
     children: Array<ast>
 }
 
@@ -14,4 +11,11 @@ export type generatorContext = {
     newLine(): void,
     indent(): void,
     deindent(): void,
+}
+
+export type transformContext = {
+    currentNode: ast | null,
+    parent: ast[],
+    currentIndex: number,
+    removeNode: () => void,
 }
